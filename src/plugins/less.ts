@@ -33,7 +33,7 @@ const plugin = {
         });
 
         functions.add('cie_mix', (color1: any, color2: any, amount: any) => {
-            return toLess(less, mix, [color1.value, color2.value, amount.value * 100]);
+            return toLess(less, mix, [color1.value, color2.value, amount.value / 100]);
         });
     },
 };

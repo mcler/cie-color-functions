@@ -1,9 +1,7 @@
-### v0.1.2 (2021-10-14)
-- `cie_mix` function in less plugin now accepts percentages
+### v0.1.1..0.1.3 (2021-10-14)
+- `cie_mix` function in Less plugin now accepts percentages as native `mix`
 - updated Less example
-
-### v0.1.1 (2021-10-14)
-Fixed typos, bumped dependencies.
+- fixed typos, bumped dependencies.
 
 ### v0.1.0 (2021-10-14)
 Initial release
