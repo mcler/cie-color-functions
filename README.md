@@ -1,5 +1,5 @@
 # 🌈 CIE Color Functions
-**Human perceived color functions base on LAB/LCH color spaces**
+**Human perceived color functions based on LAB/LCH color spaces**
 
 ---
 
@@ -13,6 +13,15 @@ Parsing and manipulations utilized via [Colord](https://github.com/omgovich/colo
 - mix
 
 ## Usage
+
+### Installation
+```
+npm i @mcler/cie-color-functions --D
+```
+```
+ya add @mcler/cie-color-functions --dev
+```
+
 ### As standalone functions
 
 ```js
@@ -31,7 +40,7 @@ const mixedColor = mix(baseColor, '#f00', 0.5); // #c66f7a
 
 #### cie.js:
 ```js
-const lessPlugin = require('@mcler/cie-color-functions/less');
+const lessPlugin = require('@mcler/cie-color-functions/plugins/less');
 module.exports = lessPlugin;
 ```
 #### style.less:
@@ -70,7 +79,7 @@ module.exports = lessPlugin;
 ```
 
 ## TODO
-- [ ] Palettes generation
+- [ ] Pallettes generation
 - [ ] Tests
 - [ ] Sass plugin
 - [ ] PostCSS plugin

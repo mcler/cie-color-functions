@@ -1,4 +1,4 @@
-const { lighten, darken, colorful, rotate, mix } = require('../../src');
+const { lighten, darken, colorful, rotate, mix } = require('../../dist');
 
 const baseColor = '#2b99ea'; console.log(baseColor);
 const darkenColor = darken(baseColor, 15); console.log(darkenColor.hex);
