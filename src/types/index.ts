@@ -32,18 +32,38 @@ export namespace Less {
         alpha: number;
     }
 
-    export type PluginFunction = (...args: never) => string;
+    export type PluginFunction = (...args: never) => AnyNode;
 
     export interface PluginFunctions {
         add: (name: string, callback: PluginFunction) => void;
     }
 
-    export interface ColorNode {
-        constructor: (color: RgbColor, alpha: number) => void;
+    export interface NodeColor {
+        new (color: RgbColor, alpha: number): NodeColor;
+
+        rgb: RgbColor;
+        alpha: number;
+        value: string;
+
+        parent?: AnyNode;
     }
 
+    export interface NodeUnit {
+        numerator: Array<string>;
+        denominator: Array<string>;
+        backupUnit: string;
+        parent: NodeValue;
+    }
+
+    export interface NodeValue {
+        value: number;
+        unit: NodeUnit;
+    }
+
+    export type AnyNode = NodeColor | NodeValue | NodeUnit;
+
     export interface Tree {
-        Color: ColorNode;
+        Color: NodeColor;
     }
 
     export interface Static {

@@ -26,6 +26,14 @@
     color: cie_rotate(@color-text, -90deg);
 }
 
-.text-mix {
-    color: cie_mix(@color-text, #f00, 50%);
+.text-mix1 {
+    color: cie_mix(@color-text, #f00, 33%);
+}
+
+.text-mix2 {
+    color: cie_mix(@color-text, #f00, 0.33);
+}
+
+.text-combined {
+    color: cie_colorful(cie_darken(@color-text, 15%), -15);
 }
