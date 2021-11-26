@@ -48,8 +48,8 @@ const mixedColor = mix(baseColor, '#f00', 0.5); // #c66f7a
 
 #### cie.js:
 ```js
-const lessPlugin = require('@mcler/cie-color-functions/plugins/less');
-module.exports = lessPlugin;
+const { CieColorFunctionsPlugin } = require('@mcler/cie-color-functions/plugins/less');
+module.exports = CieColorFunctionsPlugin;
 ```
 
 #### style.less:

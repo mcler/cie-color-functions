@@ -1,6 +1,6 @@
 {
   "name": "@mcler/cie-color-functions",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Human perceived color functions base on LAB/LCH color spaces",
   "keywords": [
     "cie",

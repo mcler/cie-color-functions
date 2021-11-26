@@ -1,2 +1,3 @@
-const lessPlugin = require('../../dist/plugins/less');
-module.exports = lessPlugin;
+const { CieColorFunctionsPlugin } = require('../../dist/plugins/less');
+
+module.exports = CieColorFunctionsPlugin;

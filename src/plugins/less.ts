@@ -48,7 +48,7 @@ function normalizeAmount(amount: Less.NodeValue, max = 100, round = 2): number {
     return Math.round(value * 10 ** round) / 10 ** round;
 }
 
-const plugin = {
+export const CieColorFunctionsPlugin = {
     install(less: Less.Static, pluginManager: unknown, functions: Less.PluginFunctions) {
         functions.add('cie_darken', (color: Less.NodeColor, amount: Less.NodeValue) => {
             const colorNormalized = normalizeColor(color);
@@ -88,5 +88,3 @@ const plugin = {
         });
     },
 };
-
-export default plugin;
