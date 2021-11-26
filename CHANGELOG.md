@@ -1,3 +1,6 @@
+### v0.2.4 (2021-11-26)
+- Updated publishing script
+
 ### v0.2.3 (2021-11-26)
 - Added named export to Less Plugin
 

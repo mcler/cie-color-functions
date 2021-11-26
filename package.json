@@ -1,6 +1,6 @@
 {
   "name": "@mcler/cie-color-functions",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Human perceived color functions base on LAB/LCH color spaces",
   "keywords": [
     "cie",
@@ -38,7 +38,7 @@
   "scripts": {
     "build": "rm -rf ./dist/* && rollup --config && cp *.json dist && cp *.md dist",
     "lint": "eslint --ext=ts src/",
-    "publish": "npm publish ./dist --access public",
+    "publish": "cd ./dist && npm publish --access public",
     "release": "npm run build && npm run npm-publish",
     "test": "uvu -r esm tests"
   },
