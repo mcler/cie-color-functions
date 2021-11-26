@@ -1,7 +1,7 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
 
-import * as functions from '../dist/index.mjs';
+import * as functions from '../dist';
 
 const test = suite('modules');
 

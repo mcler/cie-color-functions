@@ -1,3 +1,7 @@
+### v0.2.1 (2021-11-26)
+- Fixed package type
+- Fixed `uvu` tests run
+
 ### v0.2.0 (2021-11-25)
 - Function `colorful` replaced with `desaturate`/`saturate` functions
 - Less plugin: `rotate` -> `spin`, `cie_colorful` split into `desaturate`/`saturate`
