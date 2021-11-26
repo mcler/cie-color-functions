@@ -1,5 +1,7 @@
-import { colord } from 'colord';
-import { colorful, darken, lighten, rotate, mix } from '../lib/index';
+import { colord, Colord } from 'colord';
+import {
+    darken, lighten, desaturate, saturate, rotate, mix,
+} from '../lib/index';
 import { Less, RgbaColor } from '../types';
 
 function rgbaToLessColor(rgba: RgbaColor): Less.ColorObject {
@@ -9,16 +11,17 @@ function rgbaToLessColor(rgba: RgbaColor): Less.ColorObject {
     };
 }
 
-function toLess(less: Less.Static, func: Function, args: Array<unknown>) {
+function toLess(less: Less.Static, func: (..._: any[]) => Colord, args: Array<unknown>) {
     const newColor = func(...args);
-    const lessColor = rgbaToLessColor(newColor.rgba);
+    const lessColor = rgbaToLessColor(newColor.toRgb());
     return new less.tree.Color(lessColor.color, lessColor.alpha);
 }
 
 function normalizeColor(color: Less.NodeColor): string {
     if (color.value) {
         return colord(color.value).toHex();
-    } else if (color.rgb) {
+    }
+    if (color.rgb) {
         return colord({
             r: color.rgb[0],
             g: color.rgb[1],
@@ -33,18 +36,20 @@ function normalizeAmount(amount: Less.NodeValue, max = 100, round = 2): number {
     let { value } = amount;
     switch (amount.unit?.backupUnit) {
         case '%':
-            if (max !== 100) value = value * max / 100;
+            if (max !== 100) value = (value * max) / 100;
             break;
+        case 'deg':
         case undefined:
         case null:
-            if (value > 1) value = value / max;
+        default:
+            //
             break;
     }
-    return Math.round(value * Math.pow(10, round)) / Math.pow(10, round);
+    return Math.round(value * 10 ** round) / 10 ** round;
 }
 
 const plugin = {
-    install(less: Less.Static, pluginManager: any, functions: Less.PluginFunctions) {
+    install(less: Less.Static, pluginManager: unknown, functions: Less.PluginFunctions) {
         functions.add('cie_darken', (color: Less.NodeColor, amount: Less.NodeValue) => {
             const colorNormalized = normalizeColor(color);
             const amountNormalized = normalizeAmount(amount);
@@ -57,16 +62,22 @@ const plugin = {
             return toLess(less, lighten, [colorNormalized, amountNormalized]);
         });
 
-        functions.add('cie_rotate', (color: Less.NodeColor, amount: Less.NodeValue) => {
+        functions.add('cie_spin', (color: Less.NodeColor, amount: Less.NodeValue) => {
             const colorNormalized = normalizeColor(color);
             const amountNormalized = normalizeAmount(amount, 360);
             return toLess(less, rotate, [colorNormalized, amountNormalized]);
         });
 
-        functions.add('cie_colorful', (color: Less.NodeColor, amount: Less.NodeValue) => {
+        functions.add('cie_desaturate', (color: Less.NodeColor, amount: Less.NodeValue) => {
             const colorNormalized = normalizeColor(color);
             const amountNormalized = normalizeAmount(amount);
-            return toLess(less, colorful, [colorNormalized, amountNormalized]);
+            return toLess(less, desaturate, [colorNormalized, amountNormalized]);
+        });
+
+        functions.add('cie_saturate', (color: Less.NodeColor, amount: Less.NodeValue) => {
+            const colorNormalized = normalizeColor(color);
+            const amountNormalized = normalizeAmount(amount);
+            return toLess(less, saturate, [colorNormalized, amountNormalized]);
         });
 
         functions.add('cie_mix', (color1: Less.NodeColor, color2: Less.NodeColor, amount: Less.NodeValue) => {
@@ -77,6 +88,5 @@ const plugin = {
         });
     },
 };
-
 
 export default plugin;

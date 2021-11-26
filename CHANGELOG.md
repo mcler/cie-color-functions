@@ -1,3 +1,10 @@
+### v0.2.0 (2021-11-25)
+- Function `colorful` replaced with `desaturate`/`saturate` functions
+- Less plugin: `rotate` -> `spin`, `cie_colorful` split into `desaturate`/`saturate`
+- Updated dependencies
+- Added code style
+- Added tests
+
 ### v0.1.4 (2021-10-15)
 - Less plugin: added more typings, fixed calculation of Less Color Nodes, improved absolute and relative parameters calculations
 

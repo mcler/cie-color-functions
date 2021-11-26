@@ -1,28 +1,6 @@
-// import * as Less from "@types/less";
-
-import { RgbaColor } from "colord";
-
-// declare namespace Complimentary {
-//     type LessFunction = (...args) => string;
-
-//     interface Functions {
-//         add: (name: string, callback: LessFunction) => void;
-//     }
-
-//     interface Plugin {
-//         install: (less: LessStatic, pluginManager: Less.PluginManager, functions: Functions) => void;
-//         minVersion?: [number, number, number] | undefined;
-//     }
-// }
-
-// export const FC: (typeof Complimentary & typeof Less) = Less as any;
-
-export type InternalColor = {
-    rgba: RgbaColor;
-    hex: string;
-}
-
-export { AnyColor, LabaColor, LchaColor, RgbaColor } from "colord";
+export {
+    AnyColor, LabaColor, LchaColor, RgbaColor,
+} from 'colord';
 
 export namespace Less {
     export type RgbColor = [number, number, number];

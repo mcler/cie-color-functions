@@ -1,69 +1,79 @@
-import { colord } from './colord';
-import { AnyColor, LabaColor, LchaColor, InternalColor } from "../types";
+import { colord, Colord } from './colord';
+import { AnyColor, LabaColor, LchaColor } from '../types';
 import { clamp } from './utils';
 
- // https://www.w3.org/TR/css-color-4/#specifying-lab-lch
-const LAB_MAX_LIGHTNESS = 400;
-const LCH_MAX_HUE = 360;
-const LCH_MAX_COLORFULNESS = 230;
+// https://www.w3.org/TR/css-color-4/#specifying-lab-lch
+export const LAB_MAX_LIGHTNESS = 400;
+export const LCH_MAX_HUE = 360;
+export const LCH_MAX_COLORFULNESS = 230;
 
 /**
  * Осветление цвета
  */
-export function lighten(color: AnyColor, amount = 0): InternalColor {
+export function lighten(color: AnyColor, amount = 0): Colord {
     const oldLab = colord(color).toLab();
     const newLab: LabaColor = {
         ...oldLab,
         l: clamp(oldLab.l + amount, 0, LAB_MAX_LIGHTNESS),
     };
-    const newColord = colord(newLab);
-    return {
-        rgba: newColord.toRgb(),
-        hex: newColord.toHex(),
-    };
+
+    return colord(newLab);
 }
 
 /**
  * Затемнение цвета
  */
-export function darken(color: AnyColor, amount = 0): InternalColor {
+export function darken(color: AnyColor, amount = 0): Colord {
     return lighten(color, 0 - amount);
 }
 
-export function rotate(color: AnyColor, amount = 0): InternalColor {
-    const oldColord = colord(color)
+/**
+ * Изменение тона
+ */
+export function rotate(color: AnyColor, amount = 0): Colord {
+    const oldColord = colord(color);
     const oldLch = oldColord.toLch();
     const newLch: LchaColor = {
         ...oldLch,
         h: ((oldLch.h + amount) % LCH_MAX_HUE),
     };
-    const newColord = colord(newLch);
-    return {
-        rgba: newColord.toRgb(),
-        hex: newColord.toHex(),
-    };
+
+    return colord(newLch);
 }
 
-export function colorful(color: AnyColor, amount = 0): InternalColor {
+export const spin = rotate;
+
+/**
+ * Increase saturation
+ */
+export function saturate(color: AnyColor, amount = 0): Colord {
     const oldColord = colord(color);
+
+    // return existing color if saturation is zero
+    if (oldColord.toHsl().s === 0) {
+        return oldColord;
+    }
+
     const oldLch = oldColord.toLch();
     const newLch: LchaColor = {
         ...oldLch,
         c: clamp(oldLch.c + amount, 0, LCH_MAX_COLORFULNESS),
     };
-    const newColord = colord(newLch);
-    return {
-        rgba: newColord.toRgb(),
-        hex: newColord.toHex(),
-    };
+
+    return colord(newLch);
 }
 
-export function mix(color1: AnyColor, color2: AnyColor, ratio = 0): InternalColor {
-    const newColord = colord(color1).mix(color2, ratio);
-    return {
-        rgba: newColord.toRgb(),
-        hex: newColord.toHex(),
-    };
+/**
+ * Decrease saturation
+ */
+export function desaturate(color: AnyColor, amount = 0): Colord {
+    return saturate(color, 0 - amount);
 }
 
-// saturate('#f00', 1);
+/**
+ * Mix colors
+ */
+export function mix(color1: AnyColor, color2: AnyColor, ratio = 0): Colord {
+    // colord mixes colors via Lab color space, so no need to convert them manually
+    return colord(color1).mix(color2, ratio);
+}

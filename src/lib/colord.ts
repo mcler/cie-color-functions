@@ -11,4 +11,4 @@ extend([
     mixPlugin,
 ]);
 
-export { colord } from "colord";
+export { colord, Colord } from 'colord';

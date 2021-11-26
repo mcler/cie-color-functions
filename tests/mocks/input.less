@@ -1,5 +1,3 @@
-@plugin "cie";
-
 @base-color: #2b99ea;
 
 .text {
@@ -22,8 +20,12 @@
     color: cie_saturate(@base-color, 15%);
 }
 
-.text-rotate {
+.text-spin1 {
     color: cie_spin(@base-color, 120deg);
+}
+
+.text-spin2 {
+    color: cie_spin(@base-color, 240deg);
 }
 
 .text-mix1 {

@@ -1,0 +1,30 @@
+.text {
+  color: #2b99ea;
+}
+.text-light {
+  color: #64c1ff;
+}
+.text-dark {
+  color: #0073c0;
+}
+.text-desaturate {
+  color: #5e97d0;
+}
+.text-saturate {
+  color: #009cff;
+}
+.text-spin1 {
+  color: #e26a76;
+}
+.text-spin2 {
+  color: #50a253;
+}
+.text-mix1 {
+  color: #a97f9f;
+}
+.text-mix2 {
+  color: #a97f9f;
+}
+.text-combined {
+  color: #466490;
+}
