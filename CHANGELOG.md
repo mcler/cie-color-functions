@@ -1,4 +1,4 @@
-### v0.2.1 (2021-11-26)
+### v0.2.2 (2021-11-26)
 - Fixed package type
 - Fixed `uvu` tests run
 
