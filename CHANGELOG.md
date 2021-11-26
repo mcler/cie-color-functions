@@ -1,10 +1,6 @@
-### v0.2.4 (2021-11-26)
+### v0.2.5 (2021-11-26)
 - Updated publishing script
-
-### v0.2.3 (2021-11-26)
 - Added named export to Less Plugin
-
-### v0.2.2 (2021-11-26)
 - Fixed package type
 - Fixed `uvu` tests run
 
