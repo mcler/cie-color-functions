@@ -32,11 +32,11 @@ function normalizeColor(color: Less.NodeColor): string {
     return '#000';
 }
 
-function normalizeAmount(amount: Less.NodeValue, max = 100, round = 2): number {
+function normalizeAmount(amount: Less.NodeValue, min?: number, max?: number): number {
     let { value } = amount;
     switch (amount.unit?.backupUnit) {
         case '%':
-            if (max !== 100) value = (value * max) / 100;
+            if (max !== undefined) value = (value * max) / 100;
             break;
         case 'deg':
         case undefined:
@@ -45,7 +45,7 @@ function normalizeAmount(amount: Less.NodeValue, max = 100, round = 2): number {
             //
             break;
     }
-    return Math.round(value * 10 ** round) / 10 ** round;
+    return Number(value);
 }
 
 export const CieColorFunctionsPlugin = {
@@ -64,7 +64,7 @@ export const CieColorFunctionsPlugin = {
 
         functions.add('cie_spin', (color: Less.NodeColor, amount: Less.NodeValue) => {
             const colorNormalized = normalizeColor(color);
-            const amountNormalized = normalizeAmount(amount, 360);
+            const amountNormalized = normalizeAmount(amount);
             return toLess(less, rotate, [colorNormalized, amountNormalized]);
         });
 
@@ -83,7 +83,7 @@ export const CieColorFunctionsPlugin = {
         functions.add('cie_mix', (color1: Less.NodeColor, color2: Less.NodeColor, amount: Less.NodeValue) => {
             const colorNormalized1 = normalizeColor(color1);
             const colorNormalized2 = normalizeColor(color2);
-            const amountNormalized = normalizeAmount(amount, 1);
+            const amountNormalized = 1 - (normalizeAmount(amount) / 100);
             return toLess(less, mix, [colorNormalized1, colorNormalized2, amountNormalized]);
         });
     },

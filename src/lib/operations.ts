@@ -8,7 +8,10 @@ export const LCH_MAX_HUE = 360;
 export const LCH_MAX_COLORFULNESS = 230;
 
 /**
- * Осветление цвета
+ * Make color lighter
+ * @param color Color
+ * @param amount Lighten amount
+ * @returns {Colord}
  */
 export function lighten(color: AnyColor, amount = 0): Colord {
     const oldLab = colord(color).toLab();
@@ -21,14 +24,20 @@ export function lighten(color: AnyColor, amount = 0): Colord {
 }
 
 /**
- * Затемнение цвета
+ * Make color darker
+ * @param color Color
+ * @param amount Darken amount
+ * @returns {Colord}
  */
 export function darken(color: AnyColor, amount = 0): Colord {
     return lighten(color, 0 - amount);
 }
 
 /**
- * Изменение тона
+ * Change colorfulness
+ * @param color Color
+ * @param amount Colorfulness amount
+ * @returns {Colord}
  */
 export function rotate(color: AnyColor, amount = 0): Colord {
     const oldColord = colord(color);
@@ -45,6 +54,9 @@ export const spin = rotate;
 
 /**
  * Increase saturation
+ * @param color Color
+ * @param amount Saturation amount
+ * @returns {Colord}
  */
 export function saturate(color: AnyColor, amount = 0): Colord {
     const oldColord = colord(color);
@@ -65,6 +77,9 @@ export function saturate(color: AnyColor, amount = 0): Colord {
 
 /**
  * Decrease saturation
+ * @param color Color
+ * @param amount Desaturation amount
+ * @returns {Colord}
  */
 export function desaturate(color: AnyColor, amount = 0): Colord {
     return saturate(color, 0 - amount);
@@ -72,6 +87,10 @@ export function desaturate(color: AnyColor, amount = 0): Colord {
 
 /**
  * Mix colors
+ * @param color1 Color #1
+ * @param color2 Color #2
+ * @param ratio Mix ratio (0..1)
+ * @returns {Colord}
  */
 export function mix(color1: AnyColor, color2: AnyColor, ratio = 0): Colord {
     // colord mixes colors via Lab color space, so no need to convert them manually
