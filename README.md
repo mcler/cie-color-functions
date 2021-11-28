@@ -2,12 +2,12 @@
 
 [![npm package](https://img.shields.io/npm/v/@mcler/cie-color-functions.svg)](https://www.npmjs.org/package/@mcler/cie-color-functions)
 
-**Human perceived color functions based on [LAB](https://en.wikipedia.org/wiki/CIELAB_color_space)/[LCH](https://en.wikipedia.org/wiki/CIELAB_color_space#Cylindrical_model) color spaces**
+**Human perceived color functions based on [CIE LAB](https://en.wikipedia.org/wiki/CIELAB_color_space)/[CIE LCH](https://en.wikipedia.org/wiki/CIELAB_color_space#Cylindrical_model) color spaces**
 
 ---
 
 ## Why?
-Default color manipulation functions do not take into account color perception. 
+Default color manipulation functions do not take into account color perception.
 
 ### Available functions:
 - `lighten`

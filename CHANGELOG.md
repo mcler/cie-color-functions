@@ -1,8 +1,13 @@
+### v0.2.6 (2021-11-28)
+- Fixed Less `mix` function behavior
+- Fixed `uvu` tests run
+- Improved build output
+- Improved Less test
+
 ### v0.2.5 (2021-11-26)
 - Updated publishing script
 - Added named export to Less Plugin
 - Fixed package type
-- Fixed `uvu` tests run
 
 ### v0.2.0 (2021-11-25)
 - Function `colorful` replaced with `desaturate`/`saturate` functions
