@@ -11,6 +11,6 @@
   "include": [
     "./examples/**/*",
     "./src/**/*",
-    "./test/**/*"
+    "./tests/**/*"
   ]
 }

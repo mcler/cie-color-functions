@@ -5,7 +5,7 @@ import * as assert from 'uvu/assert';
 
 import less from 'less';
 
-import { CieColorFunctionsPlugin } from '../dist/plugins/less';
+import { CieColorFunctionsPlugin } from '../src/index.ts';
 
 const input = fs.readFileSync('./tests/mocks/input.less', 'utf8');
 const output = fs.readFileSync('./tests/mocks/output.css', 'utf8');
