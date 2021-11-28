@@ -41,7 +41,7 @@ const outputs = files.reduce((array, { input, name }, idx) => [
     {
         input,
         output: {
-            file: `dist/${name}.cjs`,
+            file: `dist/${name}.js`,
             format: 'cjs',
         },
         plugins: getRollupPluginsConfig({ declaration: false }),

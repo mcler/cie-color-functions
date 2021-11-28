@@ -1,3 +1,6 @@
+### v0.2.7 (2021-11-28)
+- Fixed CommonJS output
+
 ### v0.2.6 (2021-11-28)
 - Fixed Less `mix` function behavior
 - Fixed `uvu` tests run
