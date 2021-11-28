@@ -1,3 +1,7 @@
+### v0.2.8 (2021-11-28)
+- Fixed Typescript output
+- Fixed tests run
+
 ### v0.2.7 (2021-11-28)
 - Fixed CommonJS output
 

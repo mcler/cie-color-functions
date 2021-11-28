@@ -9,8 +9,6 @@
     "outDir": "dist"
   },
   "include": [
-    "./examples/**/*",
-    "./src/**/*",
-    "./tests/**/*"
+    "./src/**/*"
   ]
 }

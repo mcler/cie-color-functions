@@ -1,6 +1,6 @@
 {
   "name": "@mcler/cie-color-functions",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Human perceived color functions base on LAB/LCH color spaces",
   "keywords": [
     "cie",
@@ -26,7 +26,6 @@
       "require": "./plugins/less.js"
     }
   },
-  "type": "module",
   "main": "./index.js",
   "module": "./index.mjs",
   "types": "index.d.ts",
@@ -39,7 +38,7 @@
     "lint": "eslint --ext=ts src/",
     "publish": "cd ./dist && npm publish --access public",
     "release": "npm run build && npm run publish",
-    "test": "tsm node_modules/uvu/bin.js tests"
+    "test": "tsm node_modules/.bin/uvu tests"
   },
   "dependencies": {
     "colord": "^2.8.0"
