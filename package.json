@@ -19,16 +19,15 @@
   "exports": {
     ".": {
       "import": "./index.mjs",
-      "require": "./index.js",
-      "default": "./index.mjs"
+      "require": "./index.cjs"
     },
     "./plugins/less": {
       "import": "./plugins/less.mjs",
-      "require": "./plugins/less.js",
-      "default": "./plugins/less.mjs"
+      "require": "./plugins/less.cjs"
     }
   },
-  "main": "./index.js",
+  "type": "module",
+  "main": "./index.cjs",
   "module": "./index.mjs",
   "types": "index.d.ts",
   "files": [
@@ -36,7 +35,7 @@
     "plugins/*.{js,mjs,ts,map}"
   ],
   "scripts": {
-    "build": "rm -rf ./dist/* && rollup --config && cp *.json dist && cp *.md dist",
+    "build": "rm -rf ./dist/* && rollup --config && cp package.json dist && cp *.md dist",
     "lint": "eslint --ext=ts src/",
     "publish": "cd ./dist && npm publish --access public",
     "release": "npm run build && npm run publish",

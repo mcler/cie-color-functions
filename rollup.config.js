@@ -25,7 +25,6 @@ const files = [
     ...glob.sync('./src/plugins/*.ts').map((input) => ({
         input,
         name: `plugins/${path.parse(input).name}`,
-        exports: 'default',
     })),
 ];
 
@@ -42,7 +41,7 @@ const outputs = files.reduce((array, { input, name }, idx) => [
     {
         input,
         output: {
-            file: `dist/${name}.js`,
+            file: `dist/${name}.cjs`,
             format: 'cjs',
         },
         plugins: getRollupPluginsConfig({ declaration: false }),
