@@ -23,6 +23,15 @@
                 "SwitchCase": 1
             }
         ],
+        "max-len": [
+
+            "error",
+            100, {
+                "tabWidth": 4,
+                "ignoreComments": true,
+                "ignoreTrailingComments": true
+            }
+        ],
         "no-unused-vars": "off",
         "no-use-before-define": "off"
     }
