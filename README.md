@@ -16,24 +16,53 @@ Default color manipulation functions do not take into account color perception.
 - `saturate`
 - `rotate` or `spin`
 - `mix`
+- `createPalette` and `createPaletteStop`
 
 Parsing and manipulations utilized via [Colord](https://github.com/omgovich/colord). All functions return `Colord` instance.
+
+### Color Palettes
+
+#### Default
+![Default](./images/default.png)
+
+#### Linear
+![Linear](./images/linear.png)
+
+#### Ease
+![Ease](./images/ease.png)
+
+#### Ease In
+![Ease In](./images/ease-in.png)
+
+#### Ease Out
+![Ease Out](./images/ease-in.png)
+
+#### Ease In Out
+![Ease In Out](./images/ease-in-out.png)
+
+#### Ease In Out Sine
+![Ease In Out Sine](./images/ease-in-out-sine.png)
 
 ## Usage
 
 ### Installation
-```
+```bash
 npm i @mcler/cie-color-functions
 ```
 or
-```
+```bash
 yarn add @mcler/cie-color-functions
 ```
 
 ### As standalone functions
 
 ```js
-import { lighten, darken, desaturate, saturate, rotate, mix } from '@mcler/cie-color-functions';
+import {
+    lighten, darken,
+    desaturate, saturate,
+    rotate, mix,
+    createPalette, createPaletteStop,
+} from '@mcler/cie-color-functions';
 
 const baseColor = '#2b99ea';
 const darkenColor = darken(baseColor, 15); // #0073c0
@@ -42,6 +71,9 @@ const desaturatedColor = desaturate(baseColor, 15); // #5e97d0
 const moreSaturatedColor = saturate(baseColor, 15); // #009cff
 const rotatedColor = rotate(baseColor, -90); // #00a77f
 const mixedColor = mix(baseColor, '#f00', 0.5); // #c66f7a
+
+const baseColor100 = createPaletteStop(baseColor, 100); // #cce0f9
+const baseColorPalette = createPalette(baseColor); // Record<string, Colord>
 ```
 
 ### As Less plugin
@@ -84,6 +116,14 @@ module.exports = CieColorFunctionsPlugin;
 .text-mix {
     color: cie_mix(@base-color, #f00, 33%);
 }
+
+.text-50 {
+    color: cie_palette_stop(@base-color, 50);
+}
+
+.text-300 {
+    color: cie_palette_stop(@base-color, 300);
+}
 ```
 
 #### Output:
@@ -115,8 +155,15 @@ module.exports = CieColorFunctionsPlugin;
 .text-mix {
     color: #a97f9f;
 }
+
+.text-50 {
+    color: #dfebfc;
+}
+
+.text-300 {
+    color: #76b2f0;
+}
 ```
 
 ## TODO
-- [ ] Pallettes generation
 - [ ] PostCSS plugin
