@@ -22,6 +22,8 @@ Parsing and manipulations utilized via [Colord](https://github.com/omgovich/colo
 
 ### Color Palettes
 
+Color palette shades are generated via mixing with black and white. You can choose mixing strategy or even provide your own function.
+
 #### Default
 ![Default](./images/default.png)
 

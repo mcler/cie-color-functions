@@ -1,5 +1,5 @@
 ### v0.3.0 (2022-01-31)
-- Added palette shade generation
+- Added palette generation
 
 ### v0.2.8 (2021-11-28)
 - Fixed Typescript output
