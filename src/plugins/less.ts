@@ -1,6 +1,10 @@
 import { colord, Colord } from 'colord';
 import {
-    darken, lighten, desaturate, saturate, rotate, mix,
+    darken, lighten,
+    desaturate, saturate,
+    rotate,
+    mix,
+    createPaletteStop,
 } from '../lib/index';
 import { Less, RgbaColor } from '../types';
 
@@ -80,11 +84,22 @@ export const CieColorFunctionsPlugin = {
             return toLess(less, saturate, [colorNormalized, amountNormalized]);
         });
 
-        functions.add('cie_mix', (color1: Less.NodeColor, color2: Less.NodeColor, amount: Less.NodeValue) => {
-            const colorNormalized1 = normalizeColor(color1);
-            const colorNormalized2 = normalizeColor(color2);
-            const amountNormalized = 1 - (normalizeAmount(amount) / 100);
-            return toLess(less, mix, [colorNormalized1, colorNormalized2, amountNormalized]);
-        });
+        functions.add(
+            'cie_mix',
+            (color1: Less.NodeColor, color2: Less.NodeColor, amount: Less.NodeValue) => {
+                const colorNormalized1 = normalizeColor(color1);
+                const colorNormalized2 = normalizeColor(color2);
+                const amountNormalized = 1 - (normalizeAmount(amount) / 100);
+                return toLess(less, mix, [colorNormalized1, colorNormalized2, amountNormalized]);
+            },
+        );
+
+        functions.add(
+            'cie_palette_stop',
+            (color: Less.NodeColor, amount: Less.NodeValue) => {
+                const colorNormalized = normalizeColor(color);
+                return toLess(less, createPaletteStop, [colorNormalized, amount.value]);
+            },
+        );
     },
 };

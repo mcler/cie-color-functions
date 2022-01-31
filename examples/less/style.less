@@ -1,4 +1,4 @@
-@plugin "cie";
+// @plugin "cie";
 
 @base-color: #2b99ea;
 
@@ -36,4 +36,20 @@
 
 .text-combined {
     color: cie_desaturate(cie_darken(@base-color, 20%), 20%);
+}
+
+.text-50 {
+    color: cie_palette_stop(@base-color, 50);
+}
+
+.text-100 {
+    color: cie_palette_stop(@base-color, 100);
+}
+
+.text-200 {
+    color: cie_palette_stop(@base-color, 200);
+}
+
+.text-300 {
+    color: cie_palette_stop(@base-color, 300);
 }

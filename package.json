@@ -1,6 +1,6 @@
 {
   "name": "@mcler/cie-color-functions",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "Human perceived color functions base on LAB/LCH color spaces",
   "keywords": [
     "cie",
@@ -38,9 +38,12 @@
     "lint": "eslint --ext=ts src/",
     "publish": "cd ./dist && npm publish --access public",
     "release": "npm run build && npm run publish",
-    "test": "tsm node_modules/.bin/uvu tests"
+    "test": "tsm node_modules/.bin/uvu tests",
+    "utils:less": "node ./utils/less.js",
+    "utils:images": "node ./utils/images.js"
   },
   "dependencies": {
+    "bezier-easing": "^2.1.0",
     "colord": "^2.8.0"
   },
   "devDependencies": {
@@ -48,6 +51,7 @@
     "@types/node": "^16.10.9",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "canvas": "^2.9.0",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-typescript": "^3.0.0",
